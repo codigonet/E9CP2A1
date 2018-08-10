@@ -22,7 +22,10 @@ class Table
     print "por un valor de: #{d_max}\n"
   end
 
-  # total_average
+  def average
+    [@day1,@day2,@day3,@day4].sum / 4.0
+  end
+
   def to_s
     "#{@name}: #{@day1},#{@day2},#{@day3},#{@day4}"
   end
@@ -41,3 +44,6 @@ t = llama_tabla
 
 print "Mayor recaudación por mesas\n"
 t.each { |mesa| print mesa.max_by_table }
+
+ta = t.inject(0) { |suma, mesa| suma + mesa.average }
+print "Promedio de todas las mesas: #{ta / t.length}\n"
